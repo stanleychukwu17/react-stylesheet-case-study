@@ -1,8 +1,14 @@
-import {useEffect} from 'react'
-import './home.css';
+import {useEffect, useLayoutEffect} from 'react'
 
 const HomeComp = () => {
     useEffect(() => {
+        return () => {
+            let link = document.getElementById('home_link');
+            link.remove();
+        }
+    });
+
+    useLayoutEffect(() => {
         const grab = document.querySelector('head');
         const link = document.createElement("link");
         const att = document.createAttribute("href");
@@ -18,8 +24,6 @@ const HomeComp = () => {
         link.setAttributeNode(id);
 
         grab.append(link);
-
-        console.log(grab.length, grab)
     }, [])
 
     return (

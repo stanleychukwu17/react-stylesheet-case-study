@@ -1,10 +1,29 @@
-import {useEffect} from 'react'
-import './items.css';
+import {useEffect, useLayoutEffect} from 'react'
 
 const ItemComp = () => {
     useEffect(() => {
+        return () => {
+            let link = document.getElementById('items_link');
+            link.remove();
+        }
+    });
 
-        console.log('items selling comp now showing')
+    useLayoutEffect(() => {
+        const grab = document.querySelector('head');
+        const link = document.createElement("link");
+        const att = document.createAttribute("href");
+        const rel = document.createAttribute("rel");
+        const id = document.createAttribute("id");
+
+        att.value = "http://localhost:8080/items.css";
+        rel.value = "stylesheet";
+        id.value = "items_link";
+
+        link.setAttributeNode(rel);
+        link.setAttributeNode(att);
+        link.setAttributeNode(id);
+
+        grab.append(link);
     }, [])
 
     return (
