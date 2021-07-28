@@ -3,6 +3,7 @@ import './items.css';
 
 const ItemComp = () => {
     useEffect(() => {
+
         console.log('items selling comp now showing')
     }, [])
 
